@@ -56,13 +56,13 @@ def fahrplan(filepath) -> Timetable:
     for event in timetable:
         for field in "url", "logo":
             event[field] = urljoin(base_url, event[field]) if event.get(field) else None
-        for link in event["links"]:
+        for link in event.get("links", []):
             link["url"] = urljoin(base_url, link["url"]) if link["url"] else None
-        for attachment in event["attachments"]:
+        for attachment in event.get("attachments", []):
             attachment["url"] = (
                 urljoin(base_url, attachment["url"]) if attachment["url"] else None
             )
-        for person in event["persons"]:
+        for person in event.get("persons", []):
             if "code" in person:
                 # support for chaos-west
                 personurl = f'../speaker/{person["code"]}/'
