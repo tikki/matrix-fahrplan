@@ -24,6 +24,7 @@ def _env():
         "rooms": os.getenv("BOT_ROOMS", "").split(" "),
         "timetables": os.getenv("BOT_SCHEDULES", "").split(" "),
         "userid": os.getenv("BOT_USERID", ""),
+        "sync_token_store": Path(os.getenv("BOT_STORE", "data") + "/sync-token"),
     }
 
 
