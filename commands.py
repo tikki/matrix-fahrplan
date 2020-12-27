@@ -188,7 +188,9 @@ def pretty_event(format: Callable, event) -> str:
 
 def current_events(format: Callable = plain) -> str:
     return "Now playing: " + " // ".join(
-        pretty_event(format, event) for _, event in sorted(current(timetable).items())
+        pretty_event(format, event)
+        for _, event in sorted(current(timetable).items())
+        if event is not None
     )
 
 
