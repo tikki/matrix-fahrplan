@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+proot="$(realpath "$(dirname "$0")/..")"
+
+image=$(cat docker/.dockerimage)
+
+set -x
+
+"$proot"/scripts/build
+    # -it --rm \
+exec docker run --name fahrplan \
+    --detach --restart unless-stopped \
+    -v "$proot":/bot:ro \
+    -v "${proot}/data":/data \
+    -e BOT_STORE=/data \
+    "$image"

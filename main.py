@@ -15,6 +15,7 @@ async def main():
     )
     bot.live.add(commands.announce_soon)
     await bot.run()
+    # print(commands.timetable)
     # print(commands.current_events(format=commands.html))
     # print(commands.next_events(format=commands.html))
     # print(commands.pretty_room_details(commands.html, "ada"))

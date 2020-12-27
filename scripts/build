@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+proot="$(realpath "$(dirname "$0")/..")"
+
+image=$(cat "$proot"/docker/.dockerimage)
+
+set -x
+
+exec docker build \
+    --pull \
+    --tag "$image" \
+    "${proot}"/docker
