@@ -34,10 +34,28 @@ def fahrplan(filepath) -> Timetable:
         "Dijkstra": f"https://streaming.media.ccc.de/{confid}/halld",
         "Eliza": f"https://streaming.media.ccc.de/{confid}/halle",
         "Chaos-West Bühne": f"https://streaming.media.ccc.de/{confid}/chaoswest",
+        # rC3
+        "rC1": f"https://streaming.media.ccc.de/{confid}/one",
+        "rC2": f"https://streaming.media.ccc.de/{confid}/two",
+        "restrealitaet": f"https://streaming.media.ccc.de/{confid}/restrealitaet",
+        "chaosstudio-hamburg": f"https://streaming.media.ccc.de/{confid}/chaosstudio-hamburg",
+        "ChaosTrawler": f"https://streaming.media.ccc.de/{confid}/chaostrawler",
+        "r3s - Monheim/Rhein": f"https://streaming.media.ccc.de/{confid}/r3s",
+        "franconian.net": f"https://streaming.media.ccc.de/{confid}/franconiannet",
+        "Chaos-West TV": f"https://streaming.media.ccc.de/{confid}/cwtv",
+        "hacc München / about:future": f"https://streaming.media.ccc.de/{confid}/hacc",
+        "xHain Berlin": f"https://streaming.media.ccc.de/{confid}/xhain",
+        "c-base Berlin": f"https://streaming.media.ccc.de/{confid}/cbase",
+        "Bitwäscherei Zürich": f"https://streaming.media.ccc.de/{confid}/bitwaescherei",
+        "KreaturWorks": f"https://streaming.media.ccc.de/{confid}/kreaturworks",
+        "ChaosZone TV Stream": f"https://streaming.media.ccc.de/{confid}/chaoszone",
+        "OIO/A:F Bühne": f"https://streaming.media.ccc.de/{confid}/oio",
+        "SZ Bühne": f"https://streaming.media.ccc.de/{confid}/sendezentrum",
+        "Wikipaka": f"https://streaming.media.ccc.de/{confid}/wikipaka",
     }
     for event in timetable:
         for field in "url", "logo":
-            event[field] = urljoin(base_url, event[field]) if event[field] else None
+            event[field] = urljoin(base_url, event[field]) if event.get(field) else None
         for link in event["links"]:
             link["url"] = urljoin(base_url, link["url"]) if link["url"] else None
         for attachment in event["attachments"]:
