@@ -51,7 +51,7 @@ def fahrplan(filepath) -> Timetable:
             else:
                 personurl = f'speakers/{person["id"]}.html'
             person["url"] = urljoin(base_url, personurl)
-        event["stream_url"] = roomstreamurls[event["room"]]
+        event["stream_url"] = roomstreamurls.get(event["room"])
 
     return timetable
 

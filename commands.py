@@ -113,6 +113,8 @@ def br(s: str) -> str:
 
 
 def link(text: str, href: str) -> str:
+    if href is None:
+        return text
     return f'<a href="{href}">{text}</a>'
 
 
